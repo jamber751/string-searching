@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Algo4.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            Margin="10"
+            >
+
+            <Frame>
+                <VerticalStackLayout Spacing="20">
+                    <Label Text="Ввод строки" FontSize="30" HorizontalOptions="Center"/>
+                    <Entry x:Name="entryStroka" Placeholder="Введите строку"/>
+                    <Button x:Name="confirmStrokaButton" Text="Применить" Clicked="confirmStrokaButton_Clicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="frameStroka">
+                <CollectionView x:Name="collection" ItemsSource="{Binding CharColorItems}" VerticalOptions="Start" MaximumHeightRequest="100">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="5*, 5*" RowSpacing="0">
+                                <Button Grid.Row="0" Text="{Binding Id}" MaximumHeightRequest="50" MaximumWidthRequest="50" BackgroundColor="Transparent" TextColor="White" Padding="0,0,0,0"/>
+                                <Button Grid.Row="1" Text="{Binding Character}" MaximumHeightRequest="50" MaximumWidthRequest="50" TextColor="{Binding TextColor}" BorderColor="{Binding BorderColor}" BackgroundColor="{Binding BackGroundColor}" BorderWidth="2" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+
+            <Frame>
+                <VerticalStackLayout Spacing="30">
+                    <Label Text="Слово" FontSize="30" HorizontalOptions="Center"/>
+                    <Entry x:Name="entrySlovo" Placeholder="Введите слово"/>
+
+                    <Grid ColumnDefinitions="5*, 5*" ColumnSpacing="10">
+                        <Button Grid.Column="0" x:Name="algoswitcher1" Text="Кнута, Мориса и Пратта" IsEnabled="False" Clicked="algoswitcher1_Clicked"/>
+                        <Button Grid.Column="1" x:Name="algoswitcher2" Text="Боуера и Мура" Clicked="algoswitcher2_Clicked"/>
+                    </Grid>
+
+                    <Button x:Name="searchButton" Text="Найти" Clicked="searchButton_Clicked" IsEnabled="False"/>
+                    <Label x:Name="labelStroka"/>
+                    <Label x:Name="labelResult"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
